@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Siswa - Latihan USBD PAI & BP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue-main: #0ea5e9;
+            --blue-dark: #0284c7;
+            --blue-light: #e0f2fe;
+            --text-main: #1e293b;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #ffffff;
+            background-image: radial-gradient(circle at top right, #f0f9ff 0%, transparent 40%), 
+                              radial-gradient(circle at bottom left, #e0f2fe 0%, transparent 40%);
+            color: var(--text-main);
+            user-select: none;
+            -webkit-user-select: none;
+            overflow-x: hidden;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px 5vw;
+            box-sizing: border-box;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px 0 40px;
+        }
+
+        .branding h1 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 800;
+            margin: 0;
+            color: var(--blue-dark);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .branding p {
+            margin: 5px 0 0;
+            color: var(--blue-main);
+            font-weight: 700;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            letter-spacing: 1px;
+        }
+
+        /* Widget Jam Modern */
+        .clock-container {
+            background: var(--blue-light);
+            padding: 12px 25px;
+            border-radius: 20px;
+            border: 2px solid var(--blue-main);
+            text-align: center;
+            box-shadow: 0 8px 15px rgba(14, 165, 233, 0.1);
+        }
+
+        #clock {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--blue-dark);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .main-content {
+            flex: 1;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .label-divider {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--blue-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .label-divider::after {
+            content: '';
+            height: 2px;
+            background: var(--blue-light);
+            flex: 1;
+        }
+
+        /* Grid Kartu */
+        .siswa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card-school {
+            background: var(--blue-light);
+            border-radius: 28px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: #ffffff;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .icon-box svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--blue-main);
+        }
+
+        .card-school strong {
+            color: var(--blue-dark);
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .card-school:hover {
+            transform: translateY(-10px);
+            background: #ffffff;
+            border-color: var(--blue-main);
+            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.15);
+        }
+
+        .card-school:hover .icon-box {
+            background: var(--blue-main);
+        }
+
+        .card-school:hover .icon-box svg {
+            fill: #ffffff;
+        }
+
+        .footer {
+            padding: 40px 0 20px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Fullscreen Iframe */
+        #iframe-container {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: 99999;
+            background: #fff;
+        }
+
+        #exam-frame { width: 100%; height: 100%; border: none; }
+
+        @media (max-width: 480px) {
+            .header-container { justify-content: center; text-align: center; }
+            .siswa-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .card-school { padding: 20px 10px; border-radius: 20px; }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<div class="wrapper">
+    <header class="header-container">
+        <div class="branding">
+            <h1>PORTAL SISWA</h1>
+            <p>LATIHAN USBD PAI & BP • KAB. BANTUL</p>
+        </div>
+        <div class="clock-container">
+            <div id="clock">00:00:00</div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        
+        <div class="label-divider">SERVER 1</div>
+        <div class="siswa-grid" id="grid-server-1"></div>
+
+        <div class="label-divider">SERVER 2</div>
+        <div class="siswa-grid" id="grid-server-2"></div>
+
+    </main>
+
+    <footer class="footer">&copy; 2026 KKG PAI Kabupaten Bantul (Srandakan)</footer>
+</div>
+
+<div id="iframe-container"><iframe id="exam-frame" src=""></iframe></div>
+
+<script>
+    // Data Sekolah & Link
+    const server1ID = "AKfycbzIiMVLECqO_CVj1ii17ZFizmL4RQYx3zdMlWELw8BO0SmRCmg-PYfkViW0wSXaXqg";
+    const server2ID = "AKfycbzNXRvgW1Q52VnefA4XWqanSx4H-3tKUCJAl7B79VTt0j3Q_KlDJcCI7uID08Q4UyxR";
+    
+    const schools1 = ["SD Negeri 1 Godegan", "SD Negeri 1 Srandakan", "SD Negeri Koripan", "SD Negeri Talkondo", "SD Negeri Mangiran"];
+    const schools2 = ["SD IT Al-Aysar", "SD Negeri Proketen", "SD Negeri 2 Srandakan", "SD Negeri Krajan", "SD Negeri Gunungsaren"];
+
+    const getUrl = (id) => `https://script.google.com/a/macros/sd1godegan.sch.id/s/${id}/exec`;
+
+    // Render Kartu
+    const cardTemplate = (name, url) => `
+        <a href="${url}" onclick="bukaUjian(event, this.href)" class="card-school">
+            <div class="icon-box">
+                <svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M13,9V3.5L18.5,9H13M16,11V13H8V11H16M16,15V17H8V15H16Z"/></svg>
+            </div>
+            <strong>${name}</strong>
+        </a>
+    `;
+
+    document.getElementById('grid-server-1').innerHTML = schools1.map(s => cardTemplate(s, getUrl(server1ID))).join('');
+    document.getElementById('grid-server-2').innerHTML = schools2.map(s => cardTemplate(s, getUrl(server2ID))).join('');
+
+    // Jam Berjalan
+    function updateClock() {
+        const now = new Date();
+        document.getElementById('clock').innerText = now.getHours().toString().padStart(2, '0') + ":" + 
+            now.getMinutes().toString().padStart(2, '0') + ":" + now.getSeconds().toString().padStart(2, '0');
+    }
+    setInterval(updateClock, 1000); updateClock();
+
+    // Fullscreen Logic
+    function bukaUjian(event, url) {
+        event.preventDefault();
+        const container = document.getElementById('iframe-container');
+        const frame = document.getElementById('exam-frame');
+        frame.src = url;
+        container.style.display = 'block';
+
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) elem.requestFullscreen();
+        else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+    }
+
+    // Keamanan
+    document.onkeydown = (e) => {
+        if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && [73, 67, 74].includes(e.keyCode)) || (e.ctrlKey && [85, 83].includes(e.keyCode))) return false;
+    };
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('paste', e => e.preventDefault());
+</script>
+
+</body>
+</html>
