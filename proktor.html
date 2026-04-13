@@ -110,7 +110,6 @@
             box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2);
         }
 
-        /* Ikon Flat SVG */
         .icon-flat {
             width: 60px;
             height: 60px;
@@ -119,6 +118,9 @@
             padding: 15px;
             border-radius: 18px;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .icon-flat svg {
@@ -156,7 +158,6 @@
             font-size: 0.85rem;
         }
 
-        /* Iframe & Fullscreen Container */
         #iframe-container {
             display: none;
             position: fixed;
@@ -171,25 +172,6 @@
             height: 100%;
             border: none;
         }
-
-        /* Tombol Tutup saat Fullscreen */
-        #close-btn {
-            position: fixed;
-            top: 10px;
-            right: 20px;
-            z-index: 10001;
-            background: rgba(0,0,0,0.2);
-            color: white;
-            border: none;
-            padding: 5px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 600;
-            display: none;
-        }
-
-        #close-btn:hover { background: rgba(255,0,0,0.7); }
 
         @media (max-width: 480px) {
             .proktor-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
@@ -222,7 +204,9 @@
                 document.write(schools.map(school => `
                     <a href="${urlBase}" onclick="bukaIframe(event, this.href)" class="card-school">
                         <div class="icon-flat">
-                            <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3L22 9V21H2V9L12 3M12 7.7L5.2 10.7V19H18.8V10.7L12 7.7M11 10H13V12H11V10M11 13H13V15H11V13M11 16H13V18H11V16Z"/>
+                            </svg>
                         </div>
                         <strong>${school}</strong>
                     </a>
@@ -237,7 +221,6 @@
 </div>
 
 <div id="iframe-container">
-    <button id="close-btn" onclick="tutupIframe()">Keluar Fullscreen</button>
     <iframe id="exam-frame" src=""></iframe>
 </div>
 
@@ -246,32 +229,18 @@
         event.preventDefault();
         const container = document.getElementById('iframe-container');
         const frame = document.getElementById('exam-frame');
-        const closeBtn = document.getElementById('close-btn');
 
         frame.src = url;
         container.style.display = 'block';
-        closeBtn.style.display = 'block';
 
         // Fungsi Otomatis Fullscreen
         const elem = document.documentElement;
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) { /* Safari */
+        } else if (elem.webkitRequestFullscreen) {
             elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { /* IE11 */
+        } else if (elem.msRequestFullscreen) {
             elem.msRequestFullscreen();
-        }
-    }
-
-    function tutupIframe() {
-        document.getElementById('iframe-container').style.display = 'none';
-        document.getElementById('close-btn').style.display = 'none';
-        document.getElementById('exam-frame').src = "";
-        
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
         }
     }
 
