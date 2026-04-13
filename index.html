@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Utama - Latihan USBD PAI & BP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJkZWZhdWx0X2xvY2FsZSI6ICJpZCIsCiAgIm5hbWUiOiAiVHJ5b3V0IFVTQkQgUEFJIiwKICAic2hvcnRfbmFtZSI6ICJVU0JEIFBBSSIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZmZmZmZmIiwKICAidGhlbWVfY29sb3IiOiAiIzBGMUE1RTkiCn0=">
+    <style>
+        :root { 
+            /* Palet Biru yang Menyenangkan dan Segar */
+            --blue-main: #0ea5e9;    /* Sky Blue ceria */
+            --blue-dark: #0284c7;    /* Biru laut untuk teks utama */
+            --blue-light: #e0f2fe;   /* Biru sangat muda untuk background kartu */
+            --blue-hover: #bae6fd;   /* Biru muda untuk efek hover */
+            --text-main: #1e293b; 
+        }
+
+        body {
+            margin: 0; 
+            min-height: 100vh; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #ffffff; 
+            /* Tambahan aksen gradient halus di background agar tidak terlalu polos */
+            background-image: radial-gradient(circle at top right, #f0f9ff 0%, transparent 40%), 
+                              radial-gradient(circle at bottom left, #e0f2fe 0%, transparent 40%);
+            color: var(--text-main);
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            user-select: none; 
+            -webkit-user-select: none;
+            overflow-x: hidden;
+        }
+
+        .container { 
+            width: 90%; 
+            max-width: 1000px; 
+            padding: 40px 0; 
+            text-align: center; 
+        }
+
+        .branding h1 { 
+            font-size: clamp(2rem, 8vw, 3.5rem); 
+            font-weight: 800; 
+            color: var(--blue-dark); 
+            margin: 0; 
+            text-transform: uppercase; 
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 0px rgba(14, 165, 233, 0.1); /* Efek bayangan ceria */
+        }
+
+        .branding p { 
+            font-size: clamp(1rem, 3vw, 1.2rem); 
+            color: var(--blue-main); 
+            font-weight: 700; 
+            margin: 10px 0 50px; 
+            letter-spacing: 1.5px; 
+        }
+
+        /* Grid Responsif */
+        .choice-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            justify-content: center;
+        }
+
+        .choice-card {
+            background: var(--blue-light); 
+            border: 2px solid transparent; 
+            border-radius: 32px;
+            padding: 50px 30px; 
+            text-decoration: none; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+
+        .choice-card:hover { 
+            transform: translateY(-12px); 
+            background: #ffffff; 
+            border-color: var(--blue-main); 
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2); 
+        }
+
+        .icon { 
+            font-size: clamp(4rem, 10vw, 5rem); 
+            margin-bottom: 20px; 
+            filter: drop-shadow(0 5px 10px rgba(2, 132, 199, 0.15));
+            transition: transform 0.3s ease;
+        }
+
+        .choice-card:hover .icon {
+            transform: scale(1.1);
+        }
+
+        .choice-card h2 { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            color: var(--blue-dark); 
+            margin: 0; 
+        }
+
+        .choice-card p { 
+            color: #475569; 
+            font-weight: 600; 
+            margin-top: 10px; 
+            font-size: 1.1rem;
+        }
+
+        .footer { 
+            margin-top: 60px; 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            color: #94a3b8; 
+            letter-spacing: 1px;
+        }
+
+        /* Penyesuaian khusus layar sangat kecil */
+        @media (max-width: 480px) {
+            .choice-grid { grid-template-columns: 1fr; }
+            .choice-card { padding: 40px 20px; }
+            .container { width: 95%; }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div class="container">
+        <header class="branding">
+            <h1>GERBANG PORTAL</h1>
+            <p>LATIHAN USBD PAI & BP • KAB. BANTUL 2025/2026</p>
+        </header>
+
+        <div class="choice-grid">
+            <a href="ujian.html" class="choice-card">
+                <div class="icon">🚀</div> <h2>PORTAL SISWA</h2>
+                <p>Masuk Halaman Ujian</p>
+            </a>
+
+            <a href="proktor.html" class="choice-card">
+                <div class="icon">🛡️</div>
+                <h2>PORTAL PROKTOR</h2>
+                <p>Masuk Halaman Proktor</p>
+            </a>
+        </div>
+
+        <footer class="footer">
+            &copy; 2026 KKG PAI Kabupaten Bantul (Kapanewon Srandakan)
+        </footer>
+    </div>
+
+    <script>
+        // Keamanan: Blokir F12, Inspect Element, dan View Source
+        document.onkeydown = (e) => {
+            if(e.keyCode == 123) return false; // F12
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false; // Ctrl+Shift+I/C/J
+            if(e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83)) return false; // Ctrl+U (View Source) & Ctrl+S (Save)
+        };
+    </script>
+</body>
+</html>
