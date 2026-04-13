@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Proktor - Latihan USBD PAI & BP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palet Biru Ceria */
+            --blue-light: #38bdf8;
+            --blue-main: #0ea5e9;
+            --blue-dark: #0284c7;
+            --blue-deep: #0369a1;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            /* Latar belakang gradien biru yang menyegarkan */
+            background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue-dark) 100%);
+            color: #ffffff;
+            user-select: none;
+            -webkit-user-select: none;
+            overflow-x: hidden;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px 5vw;
+            box-sizing: border-box;
+        }
+
+        .branding {
+            padding: 30px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.15); /* Efek bayangan teks agar terbaca jelas */
+        }
+
+        .branding h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .branding p {
+            margin: 5px 0 0;
+            font-weight: 600;
+            color: #e0f2fe;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            letter-spacing: 2px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .label-proktor {
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .label-proktor::after, .label-proktor::before {
+            content: '';
+            height: 2px;
+            background: rgba(255, 255, 255, 0.4);
+            flex: 1;
+            border-radius: 2px;
+        }
+
+        /* Grid Responsif Otomatis */
+        .proktor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .card-school {
+            background: var(--card-bg);
+            border-radius: 20px; /* Sudut lebih membulat agar terkesan fun */
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px 15px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi memantul */
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2);
+            border: 2px solid transparent;
+        }
+
+        .card-school:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--blue-main);
+            box-shadow: 0 15px 30px rgba(2, 132, 199, 0.4);
+        }
+
+        .card-school span { 
+            font-size: 2.5rem; 
+            margin-bottom: 12px; 
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .card-school:hover span {
+            transform: scale(1.1) rotate(5deg); /* Ikon sedikit bergoyang saat dihover */
+        }
+
+        .card-school strong { 
+            color: var(--text-dark); 
+            font-size: 0.95rem; 
+            font-weight: 800; 
+            line-height: 1.4; 
+        }
+
+        .footer {
+            padding: 30px 0;
+            text-align: center;
+            color: #bae6fd;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Iframe Styles */
+        #iframe-container {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: 9999;
+            background: white;
+        }
+
+        #exam-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Penyesuaian Mobile Kecil */
+        @media (max-width: 480px) {
+            .proktor-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            .card-school { padding: 20px 10px; }
+            .card-school span { font-size: 2rem; }
+            .card-school strong { font-size: 0.85rem; }
+            .branding h1 { letter-spacing: 0; }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<div class="wrapper">
+    <header class="branding">
+        <h1>PORTAL PROKTOR</h1>
+        <p>LATIHAN USBD PAI & BP • KAB. BANTUL 2025/2026</p>
+    </header>
+
+    <main class="main-content">
+        <div class="label-proktor">Pilih Ruang Proktor Sekolah</div>
+        
+        <div class="proktor-grid">
+            <a href="https://script.google.com/a/macros/sd1godegan.sch.id/s/AKfycbxX5Ql92_iKuLhewmWgjhdE3EVdT2GG4TtDHCZqf4CPzL6UdYWemerXYBaZhHvtTu6o/exec?p=proktor" onclick="bukaIframe(event, this.href)" class="card-school"><span>🏫</span><strong>SD Negeri 1 Godegan</strong></a>
+            
+            <a href="https://script.google.com/a/macros/sd1godegan.sch.id/s/AKfycbxX5Ql92_iKuLhewmWgjhdE3EVdT2GG4TtDHCZqf4CPzL6UdYWemerXYBaZhHvtTu6o/exec?p=proktor" onclick="bukaIframe(event, this.href)" class="card-school"><span>🏫</span><strong>SD Negeri Proketen</strong></a>
+            
+            <a href="https://script.google.com/a/macros/sd1godegan.sch.id/s/AKfycbxX5Ql92_iKuLhewmWgjhdE3EVdT2GG4TtDHCZqf4CPzL6UdYWemerXYBaZhHvtTu6o/exec?p=proktor" onclick="bukaIframe(event, this.href)" class="card-school"><span>🏫</span><strong>SD Negeri Talkondo</strong></a>
+            
+            <a href="https://script.google.com/a/macros/sd1godegan.sch.id/s/AKfycbxX5Ql92_iKuLhewmWgjhdE3EVdT2GG4TtDHCZqf4CPzL6UdYWemerXYBaZhHvtTu6o/exec?p=proktor" onclick="bukaIframe(event, this.href)" class="card-school"><span>🏫</span><strong>SD Negeri 1 Srandakan</strong></a>
+            
+            <a href="https://script.google.com/a/macros/sd1godegan.sch.id/s/AKfycbxX5Ql92_iKuLhewmWgjhdE3EVdT2GG4TtDHCZqf4CPzL6UdYWemerXYBaZhHvtTu6o/exec?p=proktor" onclick="bukaIframe(event, this.href)" class="card-school"><span>🏫</span><strong>SD Negeri 2 Srandakan</strong></a>
+            
+            <a href="https://script.google.com/a/macros/sd1godegan.sch.id/s/AKfycbxX5Ql92_iKuLhewmWgjhdE3EVdT2GG4TtDHCZqf4CPzL6UdYWemerXYBaZhHvtTu6o/exec?p=proktor" onclick="bukaIframe(event, this.href)" class="card-school"><span>🏫</span><strong>SD Negeri Mangiran</strong></a>
+            
+            <a href="https://script.google.com/a/macros/sd1godegan.sch.id/s/AKfycbxX5Ql92_iKuLhewmWgjhdE3EVdT2GG4TtDHCZqf4CPzL6UdYWemerXYBaZhHvtTu6o/exec?p=proktor" onclick="bukaIframe(event, this.href)" class="card-school"><span>🏫</span><strong>SD Negeri Gunungsaren</strong></a>
+            
+            <a href="https://script.google.com/a/macros/sd1godegan.sch.id/s/AKfycbxX5Ql92_iKuLhewmWgjhdE3EVdT2GG4TtDHCZqf4CPzL6UdYWemerXYBaZhHvtTu6o/exec?p=proktor" onclick="bukaIframe(event, this.href)" class="card-school"><span>🏫</span><strong>SD Negeri Koripan</strong></a>
+            
+            <a href="https://script.google.com/a/macros/sd1godegan.sch.id/s/AKfycbxX5Ql92_iKuLhewmWgjhdE3EVdT2GG4TtDHCZqf4CPzL6UdYWemerXYBaZhHvtTu6o/exec?p=proktor" onclick="bukaIframe(event, this.href)" class="card-school"><span>🏫</span><strong>SD Negeri Krajan</strong></a>
+            
+            <a href="https://script.google.com/a/macros/sd1godegan.sch.id/s/AKfycbxX5Ql92_iKuLhewmWgjhdE3EVdT2GG4TtDHCZqf4CPzL6UdYWemerXYBaZhHvtTu6o/exec?p=proktor" onclick="bukaIframe(event, this.href)" class="card-school"><span>🏫</span><strong>SD IT Al-Aysar</strong></a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2026 KKG PAI Kabupaten Bantul (Kapanewon Srandakan)
+    </footer>
+</div>
+
+<div id="iframe-container">
+    <iframe id="exam-frame" src=""></iframe>
+</div>
+
+<script>
+    function bukaIframe(event, url) {
+        event.preventDefault(); 
+        document.getElementById('iframe-container').style.display = 'block';
+        document.getElementById('exam-frame').src = url;
+    }
+
+    // KEAMANAN: Disable F12, Inspect, dll.
+    document.onkeydown = function(e) {
+        if(e.keyCode == 123) return false;
+        if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false;
+        if(e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83)) return false;
+    };
+
+    // KEAMANAN: Disable Copy-Paste
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('paste', e => e.preventDefault());
+</script>
+
+</body>
+</html>
