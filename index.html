@@ -8,11 +8,10 @@
     <link rel="manifest" href="data:application/manifest+json;base64,ewogICJkZWZhdWx0X2xvY2FsZSI6ICJpZCIsCiAgIm5hbWUiOiAiVHJ5b3V0IFVTQkQgUEFJIiwKICAic2hvcnRfbmFtZSI6ICJVU0JEIFBBSSIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZmZmZmZmIiwKICAidGhlbWVfY29sb3IiOiAiIzBGMUE1RTkiCn0=">
     <style>
         :root { 
-            /* Palet Biru yang Menyenangkan dan Segar */
-            --blue-main: #0ea5e9;    /* Sky Blue ceria */
-            --blue-dark: #0284c7;    /* Biru laut untuk teks utama */
-            --blue-light: #e0f2fe;   /* Biru sangat muda untuk background kartu */
-            --blue-hover: #bae6fd;   /* Biru muda untuk efek hover */
+            --blue-main: #0ea5e9;    
+            --blue-dark: #0284c7;    
+            --blue-light: #e0f2fe;   
+            --blue-hover: #bae6fd;   
             --text-main: #1e293b; 
         }
 
@@ -21,7 +20,6 @@
             min-height: 100vh; 
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: #ffffff; 
-            /* Tambahan aksen gradient halus di background agar tidak terlalu polos */
             background-image: radial-gradient(circle at top right, #f0f9ff 0%, transparent 40%), 
                               radial-gradient(circle at bottom left, #e0f2fe 0%, transparent 40%);
             color: var(--text-main);
@@ -47,7 +45,7 @@
             margin: 0; 
             text-transform: uppercase; 
             letter-spacing: -1px;
-            text-shadow: 2px 2px 0px rgba(14, 165, 233, 0.1); /* Efek bayangan ceria */
+            text-shadow: 2px 2px 0px rgba(14, 165, 233, 0.1);
         }
 
         .branding p { 
@@ -58,7 +56,6 @@
             letter-spacing: 1.5px; 
         }
 
-        /* Grid Responsif */
         .choice-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
@@ -69,14 +66,35 @@
         .choice-card {
             background: var(--blue-light); 
             border: 2px solid transparent; 
-            border-radius: 32px;
-            padding: 50px 30px; 
+            border-radius: 40px;
+            padding: 60px 30px; 
             text-decoration: none; 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex; 
             flex-direction: column; 
             align-items: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.05);
+        }
+
+        /* Container Ikon Flat */
+        .icon-box {
+            width: 100px;
+            height: 100px;
+            background: #ffffff;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(2, 132, 199, 0.1);
+        }
+
+        .icon-box svg {
+            width: 50px;
+            height: 50px;
+            fill: var(--blue-main);
+            transition: all 0.3s ease;
         }
 
         .choice-card:hover { 
@@ -86,15 +104,13 @@
             box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2); 
         }
 
-        .icon { 
-            font-size: clamp(4rem, 10vw, 5rem); 
-            margin-bottom: 20px; 
-            filter: drop-shadow(0 5px 10px rgba(2, 132, 199, 0.15));
-            transition: transform 0.3s ease;
+        .choice-card:hover .icon-box {
+            background: var(--blue-main);
+            transform: scale(1.1) rotate(-5deg);
         }
 
-        .choice-card:hover .icon {
-            transform: scale(1.1);
+        .choice-card:hover .icon-box svg {
+            fill: #ffffff;
         }
 
         .choice-card h2 { 
@@ -119,11 +135,11 @@
             letter-spacing: 1px;
         }
 
-        /* Penyesuaian khusus layar sangat kecil */
         @media (max-width: 480px) {
             .choice-grid { grid-template-columns: 1fr; }
             .choice-card { padding: 40px 20px; }
-            .container { width: 95%; }
+            .icon-box { width: 80px; height: 80px; }
+            .icon-box svg { width: 40px; height: 40px; }
         }
     </style>
 </head>
@@ -137,12 +153,21 @@
 
         <div class="choice-grid">
             <a href="ujian.html" class="choice-card">
-                <div class="icon">🚀</div> <h2>PORTAL SISWA</h2>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+                    </svg>
+                </div>
+                <h2>PORTAL SISWA</h2>
                 <p>Masuk Halaman Ujian</p>
             </a>
 
             <a href="proktor.html" class="choice-card">
-                <div class="icon">🛡️</div>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.1 14.8,9.5V11H15.8V16H8.2V11H9.2V9.5C9.2,8.1 10.6,7 12,7M12,8.2C11.3,8.2 10.8,8.8 10.8,9.5V11H13.2V9.5C13.2,8.8 12.7,8.2 12,8.2Z" />
+                    </svg>
+                </div>
                 <h2>PORTAL PROKTOR</h2>
                 <p>Masuk Halaman Proktor</p>
             </a>
@@ -154,11 +179,10 @@
     </div>
 
     <script>
-        // Keamanan: Blokir F12, Inspect Element, dan View Source
         document.onkeydown = (e) => {
-            if(e.keyCode == 123) return false; // F12
-            if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false; // Ctrl+Shift+I/C/J
-            if(e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83)) return false; // Ctrl+U (View Source) & Ctrl+S (Save)
+            if(e.keyCode == 123) return false;
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false;
+            if(e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83)) return false;
         };
     </script>
 </body>
