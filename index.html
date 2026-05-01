@@ -15,9 +15,13 @@
             --text-main: #1e293b; 
         }
 
-        body {
+        /* Kunci Layar Penuh Tanpa Scroll */
+        html, body {
             margin: 0; 
-            min-height: 100vh; 
+            padding: 0;
+            height: 100vh; 
+            width: 100vw;
+            overflow: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: #ffffff; 
             background-image: radial-gradient(circle at top right, #f0f9ff 0%, transparent 40%), 
@@ -28,80 +32,103 @@
             justify-content: center;
             user-select: none; 
             -webkit-user-select: none;
-            overflow-x: hidden;
         }
 
         .container { 
             width: 90%; 
+            height: 100%;
             max-width: 1000px; 
-            padding: 40px 0; 
-            text-align: center; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Menyebarkan konten secara merata */
+            align-items: center;
+            padding: 4vh 0 2vh 0; /* Menggunakan vh agar dinamis */
+            box-sizing: border-box;
+        }
+
+        .branding {
+            text-align: center;
+            flex-shrink: 0;
+            margin-top: 2vh;
         }
 
         .branding h1 { 
-            font-size: clamp(2rem, 8vw, 3.5rem); 
+            font-size: clamp(2rem, 6vh, 4rem); 
             font-weight: 800; 
             color: var(--blue-dark); 
             margin: 0; 
             text-transform: uppercase; 
             letter-spacing: -1px;
-            text-shadow: 2px 2px 0px rgba(14, 165, 233, 0.1);
+            text-shadow: 2px 4px 10px rgba(14, 165, 233, 0.15);
         }
 
         .branding p { 
-            font-size: clamp(1rem, 3vw, 1.2rem); 
+            font-size: clamp(0.85rem, 2vh, 1.2rem); 
             color: var(--blue-main); 
             font-weight: 700; 
-            margin: 10px 0 50px; 
+            margin: 1vh 0 0 0; 
             letter-spacing: 1.5px; 
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
         }
 
         .choice-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; 
-            justify-content: center;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 3vw; 
+            width: 100%;
+            max-width: 850px;
         }
 
         .choice-card {
-            background: var(--blue-light); 
-            border: 2px solid transparent; 
-            border-radius: 40px;
-            padding: 60px 30px; 
+            background: #ffffff; 
+            border: 2px solid var(--blue-light); 
+            border-radius: 30px;
+            padding: 5vh 2vw; 
             text-decoration: none; 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex; 
             flex-direction: column; 
             align-items: center;
-            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.05);
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.05);
         }
 
-        /* Container Ikon Flat */
+        /* Container Ikon Modern */
         .icon-box {
-            width: 100px;
-            height: 100px;
-            background: #ffffff;
-            border-radius: 30px;
+            width: clamp(70px, 12vh, 110px);
+            height: clamp(70px, 12vh, 110px);
+            background: var(--blue-light);
+            border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 25px;
+            margin-bottom: 2.5vh;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 15px rgba(2, 132, 199, 0.1);
         }
 
+        /* Ikon Menggunakan Stroke (Garis) agar elegan */
         .icon-box svg {
-            width: 50px;
-            height: 50px;
-            fill: var(--blue-main);
+            width: 50%;
+            height: 50%;
+            fill: none;
+            stroke: var(--blue-main);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
             transition: all 0.3s ease;
         }
 
         .choice-card:hover { 
-            transform: translateY(-12px); 
-            background: #ffffff; 
+            transform: translateY(-10px); 
             border-color: var(--blue-main); 
-            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2); 
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15); 
         }
 
         .choice-card:hover .icon-box {
@@ -110,36 +137,37 @@
         }
 
         .choice-card:hover .icon-box svg {
-            fill: #ffffff;
+            stroke: #ffffff;
         }
 
         .choice-card h2 { 
-            font-size: 1.8rem; 
+            font-size: clamp(1.4rem, 3.5vh, 2rem); 
             font-weight: 800; 
             color: var(--blue-dark); 
             margin: 0; 
         }
 
         .choice-card p { 
-            color: #475569; 
+            color: #64748b; 
             font-weight: 600; 
-            margin-top: 10px; 
-            font-size: 1.1rem;
+            margin-top: 1vh; 
+            font-size: clamp(0.9rem, 2vh, 1.1rem);
         }
 
         .footer { 
-            margin-top: 60px; 
-            font-size: 0.9rem; 
+            font-size: clamp(0.75rem, 1.5vh, 0.9rem); 
             font-weight: 600; 
             color: #94a3b8; 
             letter-spacing: 1px;
+            flex-shrink: 0;
+            padding-top: 2vh;
         }
 
-        @media (max-width: 480px) {
-            .choice-grid { grid-template-columns: 1fr; }
-            .choice-card { padding: 40px 20px; }
-            .icon-box { width: 80px; height: 80px; }
-            .icon-box svg { width: 40px; height: 40px; }
+        /* Responsif HP */
+        @media (max-width: 600px) {
+            .choice-grid { grid-template-columns: 1fr; gap: 2vh; }
+            .choice-card { padding: 3vh 2vw; border-radius: 20px; }
+            .icon-box { width: clamp(60px, 9vh, 80px); height: clamp(60px, 9vh, 80px); margin-bottom: 1.5vh; border-radius: 18px; }
         }
     </style>
 </head>
@@ -151,27 +179,31 @@
             <p>LATIHAN USBD PAI & BP • KAB. BANTUL 2025/2026</p>
         </header>
 
-        <div class="choice-grid">
-            <a href="ujian.html" class="choice-card">
-                <div class="icon-box">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
-                    </svg>
-                </div>
-                <h2>PORTAL SISWA</h2>
-                <p>Masuk Halaman Ujian</p>
-            </a>
+        <main class="main-content">
+            <div class="choice-grid">
+                <a href="ujian.html" class="choice-card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                        </svg>
+                    </div>
+                    <h2>PORTAL SISWA</h2>
+                    <p>Masuk Halaman Ujian</p>
+                </a>
 
-            <a href="proktor.html" class="choice-card">
-                <div class="icon-box">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.1 14.8,9.5V11H15.8V16H8.2V11H9.2V9.5C9.2,8.1 10.6,7 12,7M12,8.2C11.3,8.2 10.8,8.8 10.8,9.5V11H13.2V9.5C13.2,8.8 12.7,8.2 12,8.2Z" />
-                    </svg>
-                </div>
-                <h2>PORTAL PROKTOR</h2>
-                <p>Masuk Halaman Proktor</p>
-            </a>
-        </div>
+                <a href="proktor.html" class="choice-card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M9 12l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h2>PORTAL PROKTOR</h2>
+                    <p>Masuk Halaman Proktor</p>
+                </a>
+            </div>
+        </main>
 
         <footer class="footer">
             &copy; 2026 KKG PAI Kapanewon Srandakan
