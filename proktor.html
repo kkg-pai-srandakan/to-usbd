@@ -126,7 +126,12 @@
         .icon-flat svg {
             width: 100%;
             height: 100%;
-            fill: var(--blue-main);
+            fill: none; /* Ikon menjadi berbasis garis */
+            stroke: var(--blue-main); /* Warna garis biru */
+            stroke-width: 2; /* Ketebalan garis */
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: all 0.3s ease;
         }
 
         .card-school:hover {
@@ -140,7 +145,7 @@
         }
 
         .card-school:hover .icon-flat svg {
-            fill: #ffffff;
+            stroke: #ffffff; /* Garis ikon berubah putih saat hover */
         }
 
         .card-school strong { 
@@ -167,16 +172,41 @@
             background: white;
         }
 
+        /* Desain tombol untuk menutup iframe */
+        #btn-close-iframe {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            z-index: 10001;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background 0.3s ease;
+        }
+
+        #btn-close-iframe:hover {
+            background: #dc2626;
+        }
+
         #exam-frame {
             width: 100%;
             height: 100%;
             border: none;
+            margin-top: 50px; /* Memberi ruang di atas untuk tombol close agar tidak menutupi konten iframe */
         }
 
         @media (max-width: 480px) {
             .proktor-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
             .card-school { padding: 25px 10px; }
             .icon-flat { width: 45px; height: 45px; padding: 10px; }
+            #btn-close-iframe { top: 10px; right: 10px; padding: 8px 15px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -205,7 +235,9 @@
                     <a href="${urlBase}" onclick="bukaIframe(event, this.href)" class="card-school">
                         <div class="icon-flat">
                             <svg viewBox="0 0 24 24">
-                                <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/>
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
                             </svg>
                         </div>
                         <strong>${school}</strong>
@@ -221,28 +253,31 @@
 </div>
 
 <div id="iframe-container">
+    <button id="btn-close-iframe" onclick="tutupIframe()">Tutup & Kembali</button>
     <iframe id="exam-frame" src=""></iframe>
 </div>
 
 <script>
     function bukaIframe(event, url) {
-        event.preventDefault();
+        event.preventDefault(); // Mencegah pindah ke tab baru
         const container = document.getElementById('iframe-container');
         const frame = document.getElementById('exam-frame');
 
+        // Menampilkan iframe tanpa mengubah browser menjadi Fullscreen
         frame.src = url;
         container.style.display = 'block';
-
-        const elem = document.documentElement;
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
-        }
     }
 
+    function tutupIframe() {
+        const container = document.getElementById('iframe-container');
+        const frame = document.getElementById('exam-frame');
+        
+        // Menyembunyikan iframe dan mematikan muatannya
+        container.style.display = 'none';
+        frame.src = ''; 
+    }
+
+    // Blokir kombinasi tombol inspect element
     document.onkeydown = function(e) {
         if(e.keyCode == 123) return false;
         if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false;
