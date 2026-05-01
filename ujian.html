@@ -11,6 +11,7 @@
             --blue-dark: #0284c7;
             --blue-light: #e0f2fe;
             --blue-sky: #38bdf8;
+            --blue-deep: #0369a1; /* Warna biru gelap solid */
             --text-main: #0f172a;
         }
 
@@ -22,11 +23,8 @@
             width: 100vw;
             overflow: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #ffffff;
-            background-image: 
-                radial-gradient(circle at top right, #f0f9ff 0%, transparent 40%), 
-                radial-gradient(circle at bottom left, #e0f2fe 0%, transparent 40%);
-            color: var(--text-main);
+            background: var(--blue-deep); /* Background disamakan dengan proktor */
+            color: #ffffff;
             user-select: none;
             -webkit-user-select: none;
         }
@@ -52,26 +50,28 @@
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
             margin: 0;
-            color: var(--blue-dark);
+            color: #ffffff; /* Putih agar kontras dengan background gelap */
             text-transform: uppercase;
             letter-spacing: -1px;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.2);
         }
 
         .branding p {
             margin: 5px 0 0;
-            color: var(--blue-main);
+            color: #e0f2fe;
             font-weight: 700;
             font-size: clamp(0.75rem, 1.5vw, 0.95rem);
             letter-spacing: 1px;
         }
 
-        /* Desain Jam Digital bergaya Pil */
+        /* Desain Jam Digital */
         .clock-container {
-            background: var(--blue-dark);
+            background: rgba(255, 255, 255, 0.1);
             padding: 1vh 2vw;
             border-radius: 50px;
-            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.2);
-            border: 2px solid var(--blue-sky);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         #clock {
@@ -101,7 +101,7 @@
         .label-divider {
             font-size: 0.85rem;
             font-weight: 800;
-            color: var(--blue-dark);
+            color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 2px;
             display: flex;
@@ -112,7 +112,7 @@
         .label-divider::after {
             content: '';
             height: 2px;
-            background: linear-gradient(to right, var(--blue-main), transparent);
+            background: linear-gradient(to right, rgba(255,255,255,0.5), transparent);
             flex: 1;
             border-radius: 2px;
         }
@@ -134,11 +134,10 @@
             align-items: center;
             padding: 2vh 10px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid #f0f9ff;
-            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.08);
+            border: 2px solid transparent;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        /* Desain Ikon Latihan Ujian / Komputer CBT */
         .icon-box {
             width: clamp(45px, 6vh, 60px);
             height: clamp(45px, 6vh, 60px);
@@ -152,8 +151,8 @@
         }
 
         .icon-box svg {
-            width: 80%; /* DIPERBESAR dari 50% */
-            height: 80%; /* DIPERBESAR dari 50% */
+            width: 80%;
+            height: 80%;
             fill: none;
             stroke: var(--blue-main);
             stroke-width: 2.5;
@@ -170,11 +169,10 @@
             line-height: 1.3;
         }
 
-        /* Efek Hover Keren */
+        /* Efek Hover */
         .card-school:hover {
             transform: translateY(-8px);
-            border-color: var(--blue-main);
-            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
         .card-school:hover .icon-box {
@@ -189,13 +187,12 @@
         .footer {
             padding: 1.5vh 0;
             text-align: center;
-            color: #64748b;
+            color: #bae6fd;
             font-weight: 600;
             font-size: 0.8rem;
             flex-shrink: 0;
         }
 
-        /* Fullscreen Iframe */
         #iframe-container {
             display: none;
             position: fixed;
@@ -207,7 +204,6 @@
 
         #exam-frame { width: 100%; height: 100%; border: none; }
 
-        /* Penyesuaian Mobile (Potret) */
         @media (max-width: 768px) {
             .siswa-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -293,7 +289,6 @@
         frame.src = url;
         container.style.display = 'block';
 
-        // Fungsi Fullscreen tetap dipertahankan
         const elem = document.documentElement;
         if (elem.requestFullscreen) elem.requestFullscreen();
         else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
