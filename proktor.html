@@ -42,7 +42,8 @@
         }
 
         .branding h1 {
-            font-size: clamp(1.5rem, 4vh, 2.5rem);
+            /* Teks PORTAL PROKTOR Diperbesar */
+            font-size: clamp(2.5rem, 6vh, 4rem); 
             font-weight: 800;
             margin: 0;
             letter-spacing: -1px;
@@ -111,12 +112,13 @@
         }
 
         .icon-flat {
-            width: clamp(40px, 6vh, 60px);
-            height: clamp(40px, 6vh, 60px);
+            /* Ikon Komputer Diperbesar */
+            width: clamp(60px, 8vh, 85px); 
+            height: clamp(60px, 8vh, 85px);
             margin-bottom: 1.5vh;
             background: #f0f9ff;
-            padding: 1.5vh;
-            border-radius: 16px;
+            padding: 2vh; /* Padding disesuaikan agar proporsional */
+            border-radius: 18px;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
@@ -179,15 +181,21 @@
             border: none;
         }
 
-        /* Penyesuaian khusus jika dibuka di HP (opsional agar tidak terlalu hancur jika dipaksa tanpa scroll) */
+        /* Penyesuaian khusus jika dibuka di HP */
         @media (max-width: 480px) {
             .proktor-grid { 
                 grid-template-columns: repeat(2, 1fr); 
                 gap: 1.5vh 2vw;
             }
             .card-school { padding: 1.5vh 5px; border-radius: 15px; }
-            .icon-flat { padding: 1vh; margin-bottom: 1vh; border-radius: 12px; }
-            .branding h1 { font-size: 1.5rem; }
+            .icon-flat { 
+                width: clamp(50px, 7vh, 70px); 
+                height: clamp(50px, 7vh, 70px); 
+                padding: 1.5vh; 
+                margin-bottom: 1vh; 
+                border-radius: 12px; 
+            }
+            .branding h1 { font-size: clamp(1.8rem, 5vh, 2.5rem); }
         }
     </style>
 </head>
