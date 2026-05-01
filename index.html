@@ -12,6 +12,7 @@
             --blue-dark: #0284c7;    
             --blue-light: #e0f2fe;   
             --blue-hover: #bae6fd;   
+            --blue-deep: #0369a1; /* Warna biru gelap solid */
             --text-main: #1e293b; 
         }
 
@@ -23,10 +24,8 @@
             width: 100vw;
             overflow: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #ffffff; 
-            background-image: radial-gradient(circle at top right, #f0f9ff 0%, transparent 40%), 
-                              radial-gradient(circle at bottom left, #e0f2fe 0%, transparent 40%);
-            color: var(--text-main);
+            background: var(--blue-deep); /* Background disamakan dengan proktor & ujian */
+            color: #ffffff; /* Teks diubah menjadi putih agar kontras */
             display: flex; 
             align-items: center; 
             justify-content: center;
@@ -37,7 +36,7 @@
         .container { 
             width: 90%; 
             height: 100%;
-            max-width: 1200px; /* Diperbesar dari 1000px agar proporsional */
+            max-width: 1200px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -53,20 +52,18 @@
         }
 
         .branding h1 { 
-            /* Font diperbesar */
             font-size: clamp(2.5rem, 8vh, 5.5rem); 
             font-weight: 800; 
-            color: var(--blue-dark); 
+            color: #ffffff; /* Ubah warna menjadi putih */
             margin: 0; 
             text-transform: uppercase; 
             letter-spacing: -1.5px;
-            text-shadow: 2px 4px 12px rgba(14, 165, 233, 0.15);
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .branding p { 
-            /* Subtitle diperbesar sedikit */
             font-size: clamp(0.95rem, 2.5vh, 1.4rem); 
-            color: var(--blue-main); 
+            color: #e0f2fe; /* Ubah warna agar kontras dengan bg gelap */
             font-weight: 700; 
             margin: 1.5vh 0 0 0; 
             letter-spacing: 2px; 
@@ -83,23 +80,23 @@
         .choice-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
-            gap: 4vw; /* Jarak antar kotak diperlebar */
+            gap: 4vw; 
             width: 100%;
-            max-width: 1000px; /* Diperbesar dari 850px */
+            max-width: 1000px; 
         }
 
         .choice-card {
             background: #ffffff; 
-            border: 2px solid var(--blue-light); 
+            border: 2px solid transparent; /* Disesuaikan untuk background gelap */
             border-radius: 35px;
-            padding: 7vh 3vw; /* Padding diperbesar agar kotak lebih bongsor */
+            padding: 7vh 3vw; 
             text-decoration: none; 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex; 
             flex-direction: column; 
             align-items: center;
             text-align: center;
-            box-shadow: 0 12px 25px rgba(14, 165, 233, 0.06);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* Container Ikon Diperbesar */
@@ -117,11 +114,11 @@
 
         /* Ikon SVG Diperbesar */
         .icon-box svg {
-            width: 55%; /* Persentase lebih besar dalam box */
+            width: 55%; 
             height: 55%;
             fill: none;
             stroke: var(--blue-main);
-            stroke-width: 2.2; /* Ditebalkan sedikit agar proporsional */
+            stroke-width: 2.2; 
             stroke-linecap: round;
             stroke-linejoin: round;
             transition: all 0.3s ease;
@@ -130,7 +127,7 @@
         .choice-card:hover { 
             transform: translateY(-12px); 
             border-color: var(--blue-main); 
-            box-shadow: 0 25px 50px rgba(14, 165, 233, 0.18); 
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); 
         }
 
         .choice-card:hover .icon-box {
@@ -143,10 +140,9 @@
         }
 
         .choice-card h2 { 
-            /* Judul dalam kotak diperbesar */
             font-size: clamp(1.6rem, 4vh, 2.5rem); 
             font-weight: 800; 
-            color: var(--blue-dark); 
+            color: var(--text-main); 
             margin: 0; 
         }
 
@@ -154,14 +150,13 @@
             color: #64748b; 
             font-weight: 600; 
             margin-top: 1.5vh; 
-            /* Deskripsi diperbesar */
             font-size: clamp(1rem, 2.2vh, 1.2rem);
         }
 
         .footer { 
             font-size: clamp(0.8rem, 1.8vh, 1rem); 
             font-weight: 600; 
-            color: #94a3b8; 
+            color: #bae6fd; /* Disamakan warnanya dengan footer halaman lain */
             letter-spacing: 1px;
             flex-shrink: 0;
             padding-top: 2vh;
