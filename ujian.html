@@ -10,7 +10,8 @@
             --blue-main: #0ea5e9;
             --blue-dark: #0284c7;
             --blue-light: #e0f2fe;
-            --text-main: #1e293b;
+            --blue-sky: #38bdf8;
+            --text-main: #0f172a;
         }
 
         /* Mencegah scroll di seluruh body */
@@ -22,8 +23,9 @@
             overflow: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: #ffffff;
-            background-image: radial-gradient(circle at top right, #f0f9ff 0%, transparent 40%), 
-                              radial-gradient(circle at bottom left, #e0f2fe 0%, transparent 40%);
+            background-image: 
+                radial-gradient(circle at top right, #f0f9ff 0%, transparent 40%), 
+                radial-gradient(circle at bottom left, #e0f2fe 0%, transparent 40%);
             color: var(--text-main);
             user-select: none;
             -webkit-user-select: none;
@@ -33,142 +35,163 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
-            padding: 10px 5vw;
+            padding: 2vh 4vw;
             box-sizing: border-box;
         }
 
-        /* Header lebih ringkas */
+        /* Header Modern */
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
+            padding: 1.5vh 0;
             flex-shrink: 0;
         }
 
         .branding h1 {
-            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
             margin: 0;
             color: var(--blue-dark);
             text-transform: uppercase;
+            letter-spacing: -1px;
         }
 
         .branding p {
-            margin: 0;
+            margin: 5px 0 0;
             color: var(--blue-main);
             font-weight: 700;
-            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+            letter-spacing: 1px;
         }
 
+        /* Desain Jam Digital bergaya Pil */
         .clock-container {
-            background: var(--blue-light);
-            padding: 8px 18px;
-            border-radius: 15px;
-            border: 2px solid var(--blue-main);
+            background: var(--blue-dark);
+            padding: 1vh 2vw;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.2);
+            border: 2px solid var(--blue-sky);
         }
 
         #clock {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
             font-weight: 800;
-            color: var(--blue-dark);
+            color: #ffffff;
+            letter-spacing: 2px;
         }
 
-        /* Main Content mengambil sisa ruang */
+        /* Main Content */
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Pusatkan konten secara vertikal */
-            gap: 10px;
-            min-height: 0; /* Penting agar flex child bisa mengecil */
+            justify-content: center;
+            gap: 3vh;
+            min-height: 0;
+            padding: 2vh 0;
         }
 
         .server-section {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 1.5vh;
         }
 
         .label-divider {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 800;
-            color: var(--blue-main);
+            color: var(--blue-dark);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
         .label-divider::after {
             content: '';
-            height: 1px;
-            background: var(--blue-light);
+            height: 2px;
+            background: linear-gradient(to right, var(--blue-main), transparent);
             flex: 1;
+            border-radius: 2px;
         }
 
-        /* Grid lebih rapat */
+        /* Grid Fleksibel */
         .siswa-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr); /* 5 kolom agar pas di satu baris */
-            gap: 12px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5vh 1vw;
         }
 
+        /* Desain Card Modern */
         .card-school {
-            background: var(--blue-light);
-            border-radius: 18px;
+            background: #ffffff;
+            border-radius: 20px;
             text-decoration: none;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 15px 10px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            padding: 2vh 10px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #f0f9ff;
+            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.08);
         }
 
+        /* Desain Ikon Latihan Ujian / Komputer CBT */
         .icon-box {
-            width: 40px;
-            height: 40px;
-            background: #ffffff;
-            border-radius: 12px;
+            width: clamp(45px, 6vh, 60px);
+            height: clamp(45px, 6vh, 60px);
+            background: #f0f9ff;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-bottom: 1.2vh;
+            transition: all 0.3s ease;
         }
 
         .icon-box svg {
-            width: 22px;
-            height: 22px;
-            fill: var(--blue-main);
+            width: 50%;
+            height: 50%;
+            fill: none;
+            stroke: var(--blue-main);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: all 0.3s ease;
         }
 
         .card-school strong {
-            color: var(--blue-dark);
-            font-size: 0.75rem;
+            color: var(--text-main);
+            font-size: clamp(0.75rem, 1.5vw, 0.85rem);
             font-weight: 800;
             text-align: center;
-            line-height: 1.2;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            line-height: 1.3;
         }
 
+        /* Efek Hover Keren */
         .card-school:hover {
-            transform: translateY(-5px);
-            background: #ffffff;
+            transform: translateY(-8px);
             border-color: var(--blue-main);
-            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.1);
+            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.2);
+        }
+
+        .card-school:hover .icon-box {
+            background: var(--blue-main);
+            transform: scale(1.1);
+        }
+
+        .card-school:hover .icon-box svg {
+            stroke: #ffffff;
         }
 
         .footer {
-            padding: 10px 0;
+            padding: 1.5vh 0;
             text-align: center;
-            color: #94a3b8;
-            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 600;
+            font-size: 0.8rem;
             flex-shrink: 0;
         }
 
@@ -188,15 +211,14 @@
         @media (max-width: 768px) {
             .siswa-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
+                gap: 1.5vh;
             }
-            /* Jika di mobile terlalu penuh, izinkan scroll internal hanya di area kartu */
-            .main-content {
-                overflow-y: auto;
-                justify-content: flex-start;
-                padding-right: 5px;
-            }
-            .card-school { padding: 12px 8px; }
+            .header-container { flex-direction: column; text-align: center; gap: 15px; }
+            .branding h1 { font-size: 1.8rem; }
+            .main-content { overflow-y: auto; justify-content: flex-start; padding: 10px 5px; }
+            .card-school { padding: 1.5vh 8px; border-radius: 16px; }
+            .label-divider::after { display: none; }
+            .label-divider { justify-content: center; }
         }
     </style>
 </head>
@@ -242,7 +264,12 @@
     const cardTemplate = (name, url) => `
         <a href="${url}" onclick="bukaUjian(event, this.href)" class="card-school">
             <div class="icon-box">
-                <svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M13,9V3.5L18.5,9H13M16,11V13H8V11H16M16,15V17H8V15H16Z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="14" rx="2" ry="2"></rect>
+                    <path d="M8 21h8"></path>
+                    <path d="M12 17v4"></path>
+                    <path d="M9 10l2 2 4-4"></path>
+                </svg>
             </div>
             <strong>${name}</strong>
         </a>
@@ -262,9 +289,11 @@
         event.preventDefault();
         const container = document.getElementById('iframe-container');
         const frame = document.getElementById('exam-frame');
+        
         frame.src = url;
         container.style.display = 'block';
 
+        // Fungsi Fullscreen tetap dipertahankan
         const elem = document.documentElement;
         if (elem.requestFullscreen) elem.requestFullscreen();
         else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
