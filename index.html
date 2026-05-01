@@ -8,12 +8,16 @@
     <link rel="manifest" href="data:application/manifest+json;base64,ewogICJkZWZhdWx0X2xvY2FsZSI6ICJpZCIsCiAgIm5hbWUiOiAiVHJ5b3V0IFVTQkQgUEFJIiwKICAic2hvcnRfbmFtZSI6ICJVU0JEIFBBSSIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZmZmZmZmIiwKICAidGhlbWVfY29sb3IiOiAiIzBGMUE1RTkiCn0=">
     <style>
         :root { 
-            --blue-main: #0ea5e9;    
-            --blue-dark: #0284c7;    
-            --blue-light: #e0f2fe;   
-            --blue-hover: #bae6fd;   
-            --blue-deep: #0369a1; /* Warna biru gelap solid */
-            --text-main: #1e293b; 
+            /* PALET OCEANIC BLUE (SOFT) */
+            --deep-twilight: #03045e;
+            --french-blue: #023e8a;
+            --bright-teal-blue: #0077b6;
+            --blue-green: #0096c7;
+            --turquoise-surf: #00b4d8;
+            --sky-aqua: #48cae4; /* Digunakan untuk Hover Kotak */
+            --frosted-blue: #90e0ef; /* Digunakan untuk Warna Dasar Kotak */
+            --frosted-blue-2: #ade8f4;
+            --light-cyan: #caf0f8;
         }
 
         /* Kunci Layar Penuh Tanpa Scroll */
@@ -24,8 +28,8 @@
             width: 100vw;
             overflow: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--blue-deep); /* Background disamakan dengan proktor & ujian */
-            color: #ffffff; /* Teks diubah menjadi putih agar kontras */
+            background-color: var(--deep-twilight);
+            color: var(--light-cyan); 
             display: flex; 
             align-items: center; 
             justify-content: center;
@@ -54,16 +58,16 @@
         .branding h1 { 
             font-size: clamp(2.5rem, 8vh, 5.5rem); 
             font-weight: 800; 
-            color: #ffffff; /* Ubah warna menjadi putih */
+            color: var(--light-cyan); 
             margin: 0; 
             text-transform: uppercase; 
             letter-spacing: -1.5px;
-            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
         .branding p { 
             font-size: clamp(0.95rem, 2.5vh, 1.4rem); 
-            color: #e0f2fe; /* Ubah warna agar kontras dengan bg gelap */
+            color: var(--frosted-blue); 
             font-weight: 700; 
             margin: 1.5vh 0 0 0; 
             letter-spacing: 2px; 
@@ -86,8 +90,9 @@
         }
 
         .choice-card {
-            background: #ffffff; 
-            border: 2px solid transparent; /* Disesuaikan untuk background gelap */
+            /* Kotak menggunakan warna biru pastel yang sangat lembut */
+            background-color: var(--frosted-blue); 
+            border: 2px solid transparent; 
             border-radius: 35px;
             padding: 7vh 3vw; 
             text-decoration: none; 
@@ -96,14 +101,15 @@
             flex-direction: column; 
             align-items: center;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
         }
 
-        /* Container Ikon Diperbesar */
+        /* Container Ikon */
         .icon-box {
             width: clamp(90px, 15vh, 140px);
             height: clamp(90px, 15vh, 140px);
-            background: var(--blue-light);
+            /* Background ikon dibikin biru yang sedikit lebih gelap dari kotaknya */
+            background-color: rgba(2, 62, 138, 0.1); 
             border-radius: 30px;
             display: flex;
             align-items: center;
@@ -112,12 +118,12 @@
             transition: all 0.3s ease;
         }
 
-        /* Ikon SVG Diperbesar */
+        /* Ikon SVG */
         .icon-box svg {
             width: 55%; 
             height: 55%;
             fill: none;
-            stroke: var(--blue-main);
+            stroke: var(--french-blue); /* Garis ikon berwarna biru tua agar terlihat jelas */
             stroke-width: 2.2; 
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -125,41 +131,46 @@
         }
 
         .choice-card:hover { 
-            transform: translateY(-12px); 
-            border-color: var(--blue-main); 
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); 
+            transform: translateY(-8px); 
+            /* Saat hover, warna kotak berubah ke biru aqua */
+            background-color: var(--sky-aqua);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
         }
 
         .choice-card:hover .icon-box {
-            background: var(--blue-main);
-            transform: scale(1.1) rotate(-5deg);
+            background-color: var(--french-blue); 
+            transform: scale(1.05) rotate(-3deg); 
         }
 
         .choice-card:hover .icon-box svg {
-            stroke: #ffffff;
+            stroke: var(--light-cyan);
         }
 
         .choice-card h2 { 
             font-size: clamp(1.6rem, 4vh, 2.5rem); 
             font-weight: 800; 
-            color: var(--text-main); 
+            /* Teks judul menggunakan warna sangat gelap agar terbaca jelas di background biru muda */
+            color: var(--deep-twilight); 
             margin: 0; 
         }
 
         .choice-card p { 
-            color: #64748b; 
-            font-weight: 600; 
+            /* Teks subjudul menggunakan warna biru medium */
+            color: var(--french-blue); 
+            font-weight: 700; 
             margin-top: 1.5vh; 
             font-size: clamp(1rem, 2.2vh, 1.2rem);
+            opacity: 0.85;
         }
 
         .footer { 
             font-size: clamp(0.8rem, 1.8vh, 1rem); 
             font-weight: 600; 
-            color: #bae6fd; /* Disamakan warnanya dengan footer halaman lain */
+            color: var(--frosted-blue-2); 
             letter-spacing: 1px;
             flex-shrink: 0;
             padding-top: 2vh;
+            opacity: 0.6;
         }
 
         /* Responsif HP */
