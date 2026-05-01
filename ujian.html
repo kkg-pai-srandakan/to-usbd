@@ -6,13 +6,17 @@
     <title>Portal Siswa - Latihan USBD PAI & BP</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --blue-main: #0ea5e9;
-            --blue-dark: #0284c7;
-            --blue-light: #e0f2fe;
-            --blue-sky: #38bdf8;
-            --blue-deep: #0369a1; /* Warna biru gelap solid */
-            --text-main: #0f172a;
+        :root { 
+            /* PALET OCEANIC BLUE (SOFT) */
+            --deep-twilight: #03045e;
+            --french-blue: #023e8a;
+            --bright-teal-blue: #0077b6;
+            --blue-green: #0096c7;
+            --turquoise-surf: #00b4d8;
+            --sky-aqua: #48cae4;
+            --frosted-blue: #90e0ef;
+            --frosted-blue-2: #ade8f4;
+            --light-cyan: #caf0f8;
         }
 
         /* Mencegah scroll di seluruh body */
@@ -23,8 +27,8 @@
             width: 100vw;
             overflow: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--blue-deep); /* Background disamakan dengan proktor */
-            color: #ffffff;
+            background-color: var(--deep-twilight);
+            color: var(--light-cyan);
             user-select: none;
             -webkit-user-select: none;
         }
@@ -50,15 +54,15 @@
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
             margin: 0;
-            color: #ffffff; /* Putih agar kontras dengan background gelap */
+            color: var(--light-cyan);
             text-transform: uppercase;
             letter-spacing: -1px;
-            text-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
         .branding p {
             margin: 5px 0 0;
-            color: #e0f2fe;
+            color: var(--frosted-blue);
             font-weight: 700;
             font-size: clamp(0.75rem, 1.5vw, 0.95rem);
             letter-spacing: 1px;
@@ -66,18 +70,19 @@
 
         /* Desain Jam Digital */
         .clock-container {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(144, 224, 239, 0.1); /* Frosted blue transparan */
             padding: 1vh 2vw;
             border-radius: 50px;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(144, 224, 239, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         #clock {
             font-size: clamp(1.2rem, 3vw, 1.6rem);
             font-weight: 800;
-            color: #ffffff;
+            color: var(--light-cyan);
             letter-spacing: 2px;
         }
 
@@ -101,18 +106,20 @@
         .label-divider {
             font-size: 0.85rem;
             font-weight: 800;
-            color: #ffffff;
+            color: var(--light-cyan);
             text-transform: uppercase;
             letter-spacing: 2px;
             display: flex;
             align-items: center;
             gap: 15px;
+            opacity: 0.9;
         }
 
         .label-divider::after {
             content: '';
             height: 2px;
-            background: linear-gradient(to right, rgba(255,255,255,0.5), transparent);
+            /* Gradien biru muda untuk garis server */
+            background: linear-gradient(to right, rgba(202, 240, 248, 0.3), transparent);
             flex: 1;
             border-radius: 2px;
         }
@@ -124,9 +131,9 @@
             gap: 1.5vh 1vw;
         }
 
-        /* Desain Card Modern */
+        /* Desain Card Modern Menyamai Halaman Utama */
         .card-school {
-            background: #ffffff;
+            background-color: var(--frosted-blue); 
             border-radius: 20px;
             text-decoration: none;
             display: flex;
@@ -135,13 +142,13 @@
             padding: 2vh 10px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 2px solid transparent;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .icon-box {
             width: clamp(45px, 6vh, 60px);
             height: clamp(45px, 6vh, 60px);
-            background: #f0f9ff;
+            background-color: rgba(2, 62, 138, 0.1); /* Latar ikon biru transparan */
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -151,10 +158,10 @@
         }
 
         .icon-box svg {
-            width: 80%;
-            height: 80%;
+            width: 70%;
+            height: 70%;
             fill: none;
-            stroke: var(--blue-main);
+            stroke: var(--french-blue); /* Ikon biru tua menyala */
             stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -162,7 +169,7 @@
         }
 
         .card-school strong {
-            color: var(--text-main);
+            color: var(--deep-twilight); /* Teks kartu gelap agar kontras dengan biru muda */
             font-size: clamp(0.75rem, 1.5vw, 0.85rem);
             font-weight: 800;
             text-align: center;
@@ -171,26 +178,28 @@
 
         /* Efek Hover */
         .card-school:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            background-color: var(--sky-aqua);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
         }
 
         .card-school:hover .icon-box {
-            background: var(--blue-main);
+            background-color: var(--french-blue);
             transform: scale(1.1);
         }
 
         .card-school:hover .icon-box svg {
-            stroke: #ffffff;
+            stroke: var(--light-cyan);
         }
 
         .footer {
             padding: 1.5vh 0;
             text-align: center;
-            color: #bae6fd;
+            color: var(--frosted-blue-2);
             font-weight: 600;
             font-size: 0.8rem;
             flex-shrink: 0;
+            opacity: 0.6;
         }
 
         #iframe-container {
