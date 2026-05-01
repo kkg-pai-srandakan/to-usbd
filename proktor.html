@@ -126,9 +126,9 @@
         .icon-flat svg {
             width: 100%;
             height: 100%;
-            fill: none; /* Ikon menjadi berbasis garis */
-            stroke: var(--blue-main); /* Warna garis biru */
-            stroke-width: 2; /* Ketebalan garis */
+            fill: none;
+            stroke: var(--blue-main);
+            stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
             transition: all 0.3s ease;
@@ -145,7 +145,7 @@
         }
 
         .card-school:hover .icon-flat svg {
-            stroke: #ffffff; /* Garis ikon berubah putih saat hover */
+            stroke: #ffffff;
         }
 
         .card-school strong { 
@@ -172,41 +172,16 @@
             background: white;
         }
 
-        /* Desain tombol untuk menutup iframe */
-        #btn-close-iframe {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            z-index: 10001;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: background 0.3s ease;
-        }
-
-        #btn-close-iframe:hover {
-            background: #dc2626;
-        }
-
         #exam-frame {
             width: 100%;
             height: 100%;
             border: none;
-            margin-top: 50px; /* Memberi ruang di atas untuk tombol close agar tidak menutupi konten iframe */
         }
 
         @media (max-width: 480px) {
             .proktor-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
             .card-school { padding: 25px 10px; }
             .icon-flat { width: 45px; height: 45px; padding: 10px; }
-            #btn-close-iframe { top: 10px; right: 10px; padding: 8px 15px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -253,7 +228,6 @@
 </div>
 
 <div id="iframe-container">
-    <button id="btn-close-iframe" onclick="tutupIframe()">Tutup & Kembali</button>
     <iframe id="exam-frame" src=""></iframe>
 </div>
 
@@ -266,15 +240,6 @@
         // Menampilkan iframe tanpa mengubah browser menjadi Fullscreen
         frame.src = url;
         container.style.display = 'block';
-    }
-
-    function tutupIframe() {
-        const container = document.getElementById('iframe-container');
-        const frame = document.getElementById('exam-frame');
-        
-        // Menyembunyikan iframe dan mematikan muatannya
-        container.style.display = 'none';
-        frame.src = ''; 
     }
 
     // Blokir kombinasi tombol inspect element
